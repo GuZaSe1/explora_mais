@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/lumi-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Lumi</title>
+</head>
+
+<body style="background-color: #faf3ed;">
+    <!-- faixa de entrega -->
+    <div class="top-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon-entrega" viewBox="0 0 640 640">
+            <path fill="#fff"
+                d="M64 80c-8.8 0-16 7.2-16 16l0 288c0 8.8 7.2 16 16 16l3.3 0c10.4-36.9 44.4-64 84.7-64s74.2 27.1 84.7 64l102.6 0c4.9-17.4 15.1-32.7 28.7-43.9L368 96c0-8.8-7.2-16-16-16L64 80zm3.3 368L64 448c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l288 0c35.3 0 64 28.7 64 64l0 32 55.4 0c17 0 33.3 6.7 45.3 18.7l40.6 40.6c12 12 18.7 28.3 18.7 45.3L576 384c0 35.3-28.7 64-64 64l-3.3 0c-10.4 36.9-44.4 64-84.7 64s-74.2-27.1-84.7-64l-102.6 0c-10.4 36.9-44.4 64-84.7 64s-74.2-27.1-84.7-64zM416 256l112 0 0-23.4c0-4.2-1.7-8.3-4.7-11.3l-40.6-40.6c-3-3-7.1-4.7-11.3-4.7l-55.4 0 0 80zm0 48l0 32.4c2.6-.2 5.3-.4 8-.4 40.3 0 74.2 27.1 84.7 64l3.3 0c8.8 0 16-7.2 16-16l0-80-112 0zM152 464a40 40 0 1 0 0-80 40 40 0 1 0 0 80zm272 0a40 40 0 1 0 0-80 40 40 0 1 0 0 80z" />
+        </svg>
+        Entregamos para todo o Brasil
+    </div>
+
+    <!-- cabeçalho -->
+    <header>
+        <div>
+            <img src="img/lumi-brand.png" alt="Lumi" width="120">
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="#" onclick="abrirContato()">Contato</a>
+            <a href="#promocoes">Promoções</a>
+        </nav>
+
+        <!-- dialog para entrar em contato -->
+        <div id="contato-overlay" class="overlay">
+            <div class="dialog-contato">
+                <h2>Entre em Contato</h2>
+                <p>Telefone: 54 99975-9672</p>
+                <p>Atendimento: 24 horas</p>
+                <a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnYZIVxczkF1bOZqdYdXlttkOkne5KrPH08GT-PMhQ89D-l7weQLfh52oTYmE_aem_TnwPjRfqP-JfygkiMVx7kQ"
+                    target="_blank" class="btn-wpp">
+                    Chamar no WhatsApp
+                </a>
+                <button class="btn-fechar" onclick="fecharContato()">Fechar</button>
+            </div>
+        </div>
+
+        <div class="icons">
+            <a href="https://www.instagram.com/brand.lumi/" target="_blank">
+                <button class="button-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 512">
+                        <path fill="#b74a0c"
+                            d="M224.3 141a115 115 0 1 0 -.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1 -.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1 -53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                    </svg>
+                </button>
+            </a>
+        </div>
+    </header>
+
+    <section class="body-produtos">
+        <hr class="linha-divisoria">
+
+        <section class="produtos-nav">
+            <a href="#roupas" class="prod-link">Roupas</a>
+            <a href="#oculos" class="prod-link">Óculos</a>
+            <a href="#novidades" class="prod-link">Novidades</a>
+            <a href="#promocoes" class="prod-link">Promoções</a>
+        </section>
+
+        <section class="produtos-conteudo">
+            <!-- ROUPAS -->
+            <h2 class="produtos-titulo" id="roupas">Roupas</h2>
+            <div class="grid-produtos" id="grid-roupas"></div>
+            <hr class="linha-divisoria">
+
+            <!-- ÓCULOS -->
+            <h2 class="produtos-titulo" id="oculos">Óculos</h2>
+            <div class="grid-produtos" id="grid-oculos"></div>
+            <hr class="linha-divisoria">
+
+            <!-- NOVIDADES -->
+            <h2 class="produtos-titulo" id="novidades">Novidades</h2>
+            <div class="grid-produtos" id="grid-novidades"></div>
+            <hr class="linha-divisoria">
+
+            <!-- PROMOÇÕES -->
+            <h2 class="produtos-titulo" id="promocoes">Promoções</h2>
+            <div class="grid-produtos" id="grid-promocoes"></div>
+        </section>
+    </section>
+    <hr class="linha-divisoria">
+    <footer>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3>PRODUTOS</h3>
+                <ul>
+                    <li><a href="#roupas">Roupas</a></li>
+                    <li><a href="#oculos">Óculos</a></li>
+                    <li><a href="#novidades">Novidades</a></li>
+                    <li><a href="#promocoes">Promoções</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>RECURSOS</h3>
+                <ul>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Acompanhe nosso
+                            grupo</a></li>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Torne-se membro
+                            Lumi</a></li>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Envie seu
+                            feedback</a></li>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Feedbacks</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>AJUDA</h3>
+                <ul>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Central de Ajuda</a></li>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Status do Pedido</a></li>
+                    <li><a href="https://chat.whatsapp.com/Hn4kAct9fEhEj83zvy8i65" target="_blank">Trocas e Devoluções</a></li>
+                    <li><a href="login.php">Lumi Admin</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Configurações de Cookies</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+
+            <div class="footer-copy">
+                © 2025 LUMI. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function abrirContato() {
+        document.getElementById("contato-overlay").style.display = "flex";
+    }
+
+    function fecharContato() {
+        document.getElementById("contato-overlay").style.display = "none";
+    }
+
+    async function carregarCategoria(codCategoria, elementoDestino) {
+
+        const container = document.getElementById(elementoDestino);
+        container.innerHTML = "<p>Carregando...</p>";
+
+        try {
+            const r = await fetch("listar_itens.php?categoria=" + codCategoria);
+            const dados = await r.json();
+
+            container.innerHTML = "";
+
+            if (!dados.length) {
+                container.innerHTML = "<p>Nenhum produto nesta categoria.</p>";
+                return;
+            }
+
+            dados.forEach(item => {
+                const card = `
+                <div class="card-produto">
+                    <div class="card-img">
+                        <img src="${item.imagem_item}" class="img-produto">
+                    </div>
+                    <div class="card-info">
+                        <h3>${item.den_item}</h3>
+                        <span class="card-preco">R$ ${item.preco_item}</span>
+                    </div>
+                </div>
+            `;
+                container.innerHTML += card;
+            });
+        } catch (e) {
+            container.innerHTML = "<p>Erro ao carregar produtos.</p>";
+        }
+    }
+
+    // CARREGA AS CATEGORIAS AO ABRIR A PÁGINA
+    document.addEventListener("DOMContentLoaded", function () {
+        carregarCategoria(1, "grid-roupas");
+        carregarCategoria(2, "grid-oculos");
+        carregarCategoria(3, "grid-novidades");
+        carregarCategoria(4, "grid-promocoes");
+    });
+
+</script>
