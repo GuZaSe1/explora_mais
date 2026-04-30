@@ -12,7 +12,7 @@ $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
 
 try {
     // Atualizar a senha no banco de dados
-    $stmt = $pdo->prepare("UPDATE usuarios SET senha = ? WHERE id = ?");
+    $stmt = $db->prepare("UPDATE usuarios SET senha = ? WHERE id = ?");
     $stmt->execute([$senha_hash, $usuario_id]);
 
     echo "Senha atualizada com sucesso para o usuário ID: $usuario_id";

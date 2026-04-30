@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === '' || $senha === '') {
         $mensagem = 'Informe e-mail e senha.';
     } else {
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 

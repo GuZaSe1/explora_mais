@@ -1,12 +1,12 @@
 <?php
 $host = 'localhost';
-$db   = 'exploramais';
+$dsn   = 'exploramais';
 $user = 'root';
 $pass = '1234';
 $charset = 'utf8mb4';
 
 // Data Source Name (DSN) - Define a conexão
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;dbname=$dsn;charset=$charset";
 
 // Tratamento de Erros
 $options = [
@@ -15,7 +15,7 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    $db = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
     die("Erro de conexão" . $e->getMessage());
 }

@@ -26,7 +26,7 @@ $sql = "
     ORDER BY r.id DESC
 ";
 
-$stmt = $pdo->query($sql);
+$stmt = $db->query($sql);
 $roteiros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>

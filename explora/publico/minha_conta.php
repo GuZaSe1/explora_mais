@@ -6,7 +6,7 @@ session_start();
 
 navbar('home');
 
-$stmt = $pdo->prepare("SELECT nome, email, tipo, idioma, criado_em FROM usuarios WHERE id = ?");
+$stmt = $db->prepare("SELECT nome, email, tipo, idioma, criado_em FROM usuarios WHERE id = ?");
 $stmt->execute([$_SESSION['usuario_id']]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 

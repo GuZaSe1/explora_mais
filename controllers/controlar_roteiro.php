@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($id) {
             if ($_SESSION['usuario_tipo'] !== 'admin') {
-                $stmt = $pdo->prepare("SELECT id FROM roteiros WHERE id = ? AND usuario_id = ?");
+                $stmt = $db->prepare("SELECT id FROM roteiros WHERE id = ? AND usuario_id = ?");
                 $stmt->execute([$id, $_SESSION['usuario_id']]);
 
                 if (!$stmt->fetch()) {
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             if ($response['success']) {
-                $stmt = $pdo->prepare("
+                $stmt = $db->prepare("
                     UPDATE roteiros
                        SET nome = ?, descricao = ?
                      WHERE id = ?
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $codigo = uniqid('ROT-');
 
-            $stmt = $pdo->prepare("
+            $stmt = $db->prepare("
                 INSERT INTO roteiros (usuario_id, nome, descricao, codigo_compartilhamento)
                 VALUES (?, ?, ?, ?)
             ");
@@ -66,10 +66,10 @@ $is_edit = $id !== null;
 
 if ($is_edit) {
     if ($_SESSION['usuario_tipo'] === 'admin') {
-        $stmt = $pdo->prepare("SELECT * FROM roteiros WHERE id = ?");
+        $stmt = $db->prepare("SELECT * FROM roteiros WHERE id = ?");
         $stmt->execute([$id]);
     } else {
-        $stmt = $pdo->prepare("SELECT * FROM roteiros WHERE id = ? AND usuario_id = ?");
+        $stmt = $db->prepare("SELECT * FROM roteiros WHERE id = ? AND usuario_id = ?");
         $stmt->execute([$id, $_SESSION['usuario_id']]);
     }
 

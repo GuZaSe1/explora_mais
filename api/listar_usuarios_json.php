@@ -8,7 +8,7 @@ $page = isset($_POST['page']) ? (int) $_POST['page'] : 1;
 $rows = isset($_POST['rows']) ? (int) $_POST['rows'] : 10;
 $offset = ($page - 1) * $rows;
 
-$stmt_total = $pdo->query("SELECT COUNT(*) FROM usuarios");
+$stmt_total = $db->query("SELECT COUNT(*) FROM usuarios");
 $total = (int) $stmt_total->fetchColumn();
 
 $sql = "
@@ -24,7 +24,7 @@ $sql = "
     LIMIT :rows OFFSET :offset
 ";
 
-$stmt = $pdo->prepare($sql);
+$stmt = $db->prepare($sql);
 $stmt->bindParam(':rows', $rows, PDO::PARAM_INT);
 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();

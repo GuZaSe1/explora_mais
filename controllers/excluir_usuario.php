@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($id) {
         try {
-            $stmt_check = $pdo->prepare("SELECT COUNT(*) FROM roteiros WHERE usuario_id = ?");
+            $stmt_check = $db->prepare("SELECT COUNT(*) FROM roteiros WHERE usuario_id = ?");
             $stmt_check->execute([$id]);
             $count = $stmt_check->fetchColumn();
 
             if ($count > 0) {
                 $response['message'] = 'O usuário não pode ser excluído, pois possui roteiro(s) associado(s).';
             } else {
-                $stmt_delete = $pdo->prepare("DELETE FROM usuarios WHERE id = ?");
+                $stmt_delete = $db->prepare("DELETE FROM usuarios WHERE id = ?");
                 $stmt_delete->execute([$id]);
                 $response['success'] = true;
                 $response['message'] = 'Usuário excluído com sucesso!';
