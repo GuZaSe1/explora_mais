@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/paths.php';
+require __DIR__ . '/../../config/db.php';
+require __DIR__ . '/../../config/paths.php';
 
 // Busca todos os pontos turísticos (sem LIMIT)
 $sql_pontos = "SELECT id, nome, descricao, categoria, endereco, cidade, horario_funcionamento, preco, acessibilidade, imagem
@@ -298,7 +298,7 @@ function formatarPreco($valor)
             <a href="/explora_mais/index.php" class="logo">Explora+</a>
             <nav class="menu">
                 <a href="/explora_mais/index.php">Início</a>
-                <a href="/explora_mais/pages/catalogo.php" class="ativo">Catálogo de Pontos</a>
+                <a href="/explora_mais/explora/publico/catalogo.php" class="ativo">Catálogo de Pontos</a>
             </nav>
         </div>
     </header>

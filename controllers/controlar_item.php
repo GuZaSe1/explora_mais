@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/paths.php';
+require __DIR__ . '/../config/paths.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -131,7 +131,7 @@ $categorias = $pdo->query("SELECT cod_categoria, nome_categoria FROM categoria_i
 
 if (!$is_form_only) {
     $pageTitle = $cod_item ? 'Editar Item' : 'Novo Item';
-    require __DIR__ . '/../includes/templates/header.php';
+    require __DIR__ . '/../config/includes/header.php';
 }
 ?>
 
@@ -180,6 +180,6 @@ if (!$is_form_only) {
 
 <?php
 if (!$is_form_only) {
-    require __DIR__ . '/../includes/templates/footer.php';
+    require __DIR__ . '/../config/includes/footer.php';
 }
 ?>

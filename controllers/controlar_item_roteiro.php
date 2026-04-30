@@ -88,7 +88,7 @@ if ($is_edit) {
 
 if (!$is_form_only) {
     $pageTitle = $is_edit ? 'Modificar Item do Roteiro' : 'Incluir Item no Roteiro';
-    require __DIR__ . '/../includes/templates/header.php';
+    require __DIR__ . '/../config/includes/header.php';
 }
 ?>
 
@@ -114,4 +114,4 @@ if (!$is_form_only) {
     </div>
 </form>
 
-<?php if (!$is_form_only) require __DIR__ . '/../includes/templates/footer.php'; ?>
+<?php if (!$is_form_only) require __DIR__ . '/../config/includes/footer.php'; ?>

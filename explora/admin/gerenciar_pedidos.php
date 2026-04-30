@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . '/../includes/templates/header.php';
-require __DIR__ . '/../includes/templates/navbar.php';
-require __DIR__ . '/../auth/proteger.php';
+require __DIR__ . '/../../config/includes/header.php';
+require __DIR__ . '/../../config/includes/navbar.php';
+require __DIR__ . '/../../autenticacao/proteger.php';
 
 navbar('home');
 ?>
@@ -21,8 +21,8 @@ navbar('home');
 
             <div style="margin-bottom:10px;">
                 <a onclick="abrirDialogInclusaoPedido()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Incluir Pedido</a>
-                <a href="/explora_mais/admin/gerenciar_clientes.php" class="easyui-linkbutton" data-options="iconCls:'icon-man'">Gerenciar Clientes</a>
-                <a href="/explora_mais/admin/gerenciar_itens.php" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">Gerenciar Itens</a>
+                <a href="/explora_mais/explora/admin/gerenciar_clientes.php" class="easyui-linkbutton" data-options="iconCls:'icon-man'">Gerenciar Clientes</a>
+                <a href="/explora_mais/explora/admin/gerenciar_itens.php" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">Gerenciar Itens</a>
             </div>
 
             <table id="dg_pedidos" style="width:100%; height:500px"></table>
@@ -285,4 +285,4 @@ navbar('home');
     }
 </script>
 
-<?php require __DIR__ . '/../includes/templates/footer.php'; ?>
+<?php require __DIR__ . '/../../config/includes/footer.php'; ?>

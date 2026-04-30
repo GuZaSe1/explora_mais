@@ -1,2 +1,2 @@
 <?php
-require __DIR__ . '/pages/home.php';
+require __DIR__ . '/explora/publico/home.php';

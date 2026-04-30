@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . '/../includes/templates/header.php';
-require __DIR__ . '/../includes/templates/navbar.php';
-require __DIR__ . '/../auth/proteger.php';
+require __DIR__ . '/../../config/includes/header.php';
+require __DIR__ . '/../../config/includes/navbar.php';
+require __DIR__ . '/../../autenticacao/proteger.php';
 navbar('home');
 ?>
 <!DOCTYPE html>
@@ -18,8 +18,8 @@ navbar('home');
         <div class="easyui-panel" title="Gerenciamento de Roteiros" style="padding:10px;">
             <div style="margin-bottom:10px;">
                 <a onclick="abrirDialogInclusaoRoteiro()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Incluir Roteiro</a>
-                <a href="/explora_mais/admin/gerenciar_usuarios.php" class="easyui-linkbutton" data-options="iconCls:'icon-man'">Gerenciar Usuários</a>
-                <a href="/explora_mais/admin/gerenciar_pontos_turisticos.php" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">Gerenciar Pontos Turísticos</a>
+                <a href="/explora_mais/explora/admin/gerenciar_usuarios.php" class="easyui-linkbutton" data-options="iconCls:'icon-man'">Gerenciar Usuários</a>
+                <a href="/explora_mais/explora/admin/gerenciar_pontos_turisticos.php" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">Gerenciar Pontos Turísticos</a>
             </div>
 
             <table id="dg_roteiros" style="width:100%; height:500px"></table>
@@ -272,4 +272,4 @@ navbar('home');
     }
 </script>
 
-<?php require __DIR__ . '/../includes/templates/footer.php'; ?>
+<?php require __DIR__ . '/../../config/includes/footer.php'; ?>

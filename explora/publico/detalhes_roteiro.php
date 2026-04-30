@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/paths.php';
+require __DIR__ . '/../../config/db.php';
+require __DIR__ . '/../../config/paths.php';
 session_start();
 
 $id = $_GET['id'] ?? null;
@@ -371,16 +371,16 @@ function formatarPreco($valor)
 
             <nav class="menu">
                 <a href="/explora_mais/index.php">Início</a>
-                <a href="/explora_mais/pages/catalogo.php">Pontos turísticos</a>
-                <a href="/explora_mais/pages/roteiros.php">Roteiros</a>
+                <a href="/explora_mais/explora/publico/catalogo.php">Pontos turísticos</a>
+                <a href="/explora_mais/explora/publico/roteiros.php">Roteiros</a>
                 <a href="/explora_mais/index.php#informacoes">Informações úteis</a>
 
                 <?php if (isset($_SESSION['usuario_id'])): ?>
-                    <a href="/explora_mais/admin/gerenciar_roteiros.php">Meus roteiros</a>
-                    <a href="/explora_mais/auth/logout.php">Sair</a>
+                    <a href="/explora_mais/explora/admin/gerenciar_roteiros.php">Meus roteiros</a>
+                    <a href="/explora_mais/autenticacao/logout.php">Sair</a>
                 <?php else: ?>
-                    <a href="/explora_mais/auth/login.php">Entrar</a>
-                    <a href="/explora_mais/auth/cadastro.php">Criar conta</a>
+                    <a href="/explora_mais/autenticacao/login.php">Entrar</a>
+                    <a href="/explora_mais/autenticacao/cadastro.php">Criar conta</a>
                 <?php endif; ?>
             </nav>
         </div>
@@ -399,9 +399,9 @@ function formatarPreco($valor)
             </div>
 
             <div class="acoes">
-                <a href="/explora_mais/pages/roteiros.php" class="btn btn-secundario">Voltar para roteiros</a>
+                <a href="/explora_mais/explora/publico/roteiros.php" class="btn btn-secundario">Voltar para roteiros</a>
                 <?php if (isset($_SESSION['usuario_id'])): ?>
-                    <a href="/explora_mais/admin/gerenciar_roteiros.php" class="btn">Abrir meus roteiros</a>
+                    <a href="/explora_mais/explora/admin/gerenciar_roteiros.php" class="btn">Abrir meus roteiros</a>
                 <?php endif; ?>
             </div>
         </div>

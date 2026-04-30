@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../includes/templates/header.php';
-require __DIR__ . '/../includes/templates/navbar.php';
+require __DIR__ . '/../../config/includes/header.php';
+require __DIR__ . '/../../config/includes/navbar.php';
 session_start();
 navbar('home');
 ?>
@@ -18,7 +18,7 @@ navbar('home');
         <div class="easyui-panel" title="Gerenciamento de Usuários" style="padding:10px;">
             <div style="margin-bottom:10px;">
                 <a onclick="abrirDialogInclusao()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Incluir Usuário</a>
-                <a href="/explora_mais/admin/gerenciar_roteiros.php" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">Voltar para Roteiros</a>
+                <a href="/explora_mais/explora/admin/gerenciar_roteiros.php" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">Voltar para Roteiros</a>
             </div>
 
             <table id="dg_usuarios" style="width:100%; height:400px"></table>
@@ -158,4 +158,4 @@ navbar('home');
     }
 </script>
 
-<?php require __DIR__ . '/../includes/templates/footer.php'; ?>
+<?php require __DIR__ . '/../../config/includes/footer.php'; ?>

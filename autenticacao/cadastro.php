@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ");
             $stmt->execute([$nome, $email, $senha_hash]);
 
-            header('Location: /explora_mais/auth/login.php');
+            header('Location: /explora_mais/autenticacao/login.php');
             exit;
         }
     }
@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="link-footer">
-            Já tem conta? <a href="/explora_mais/auth/login.php">Fazer login</a>
+            Já tem conta? <a href="/explora_mais/autenticacao/login.php">Fazer login</a>
         </div>
     </div>
 </body>
