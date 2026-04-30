@@ -10,12 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($id) {
         if ($_SESSION['usuario_tipo'] === 'admin') {
-            $stmt = $pdo->prepare("DELETE FROM roteiros WHERE id = ?");
+            $stmt = $db->prepare("DELETE FROM roteiros WHERE id = ?");
             $stmt->execute([$id]);
             $response['success'] = true;
             $response['message'] = 'Roteiro excluído com sucesso.';
         } else {
-            $stmt = $pdo->prepare("DELETE FROM roteiros WHERE id = ? AND usuario_id = ?");
+            $stmt = $db->prepare("DELETE FROM roteiros WHERE id = ? AND usuario_id = ?");
             $stmt->execute([$id, $_SESSION['usuario_id']]);
 
             if ($stmt->rowCount() > 0) {

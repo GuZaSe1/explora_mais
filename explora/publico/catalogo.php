@@ -6,7 +6,7 @@ require __DIR__ . '/../../config/paths.php';
 $sql_pontos = "SELECT id, nome, descricao, categoria, endereco, cidade, horario_funcionamento, preco, acessibilidade, imagem
                  FROM pontos_turisticos
              ORDER BY nome ASC"; // Ordenado por nome para facilitar no catálogo
-$stmt_pontos = $pdo->query($sql_pontos);
+$stmt_pontos = $db->query($sql_pontos);
 $pontos_turisticos = $stmt_pontos->fetchAll(PDO::FETCH_ASSOC);
 
 function formatarPreco($valor)

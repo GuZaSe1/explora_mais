@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($roteiro_id && $id) {
         try {
-            $stmt = $pdo->prepare("DELETE FROM roteiro_itens WHERE roteiro_id = ? AND id = ?");
+            $stmt = $db->prepare("DELETE FROM roteiro_itens WHERE roteiro_id = ? AND id = ?");
             $stmt->execute([$roteiro_id, $id]);
             $response['success'] = true;
             $response['message'] = 'Item do roteiro excluído com sucesso.';

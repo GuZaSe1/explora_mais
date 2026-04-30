@@ -23,7 +23,7 @@ $sql_roteiro = "
     WHERE r.id = ?
 ";
 
-$stmt_roteiro = $pdo->prepare($sql_roteiro);
+$stmt_roteiro = $db->prepare($sql_roteiro);
 $stmt_roteiro->execute([$id]);
 $roteiro = $stmt_roteiro->fetch(PDO::FETCH_ASSOC);
 
@@ -52,7 +52,7 @@ $sql_itens = "
     ORDER BY ri.ordem_visita ASC
 ";
 
-$stmt_itens = $pdo->prepare($sql_itens);
+$stmt_itens = $db->prepare($sql_itens);
 $stmt_itens->execute([$id]);
 $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
 

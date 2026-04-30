@@ -7,27 +7,27 @@ $usuario_logado = isset($_SESSION['usuario_id']);
 $usuario_nome = $_SESSION['usuario_nome'] ?? '';
 $usuario_tipo = $_SESSION['usuario_tipo'] ?? '';
 
-$stmt = $pdo->query("SELECT COUNT(*) FROM pontos_turisticos");
+$stmt = $db->query("SELECT COUNT(*) FROM pontos_turisticos");
 $total_pontos = (int) $stmt->fetchColumn();
 
-$stmt = $pdo->query("SELECT COUNT(*) FROM roteiros");   
+$stmt = $db->query("SELECT COUNT(*) FROM roteiros");   
 $total_roteiros = (int) $stmt->fetchColumn();
 
-$stmt = $pdo->query("SELECT COUNT(*) FROM usuarios");
+$stmt = $db->query("SELECT COUNT(*) FROM usuarios");
 $total_usuarios = (int) $stmt->fetchColumn();
 
 $sql_pontos = "SELECT id, nome, descricao, categoria, endereco, cidade, horario_funcionamento, preco, acessibilidade, imagem
                  FROM pontos_turisticos
              ORDER BY id DESC
                 LIMIT 4";
-$stmt_pontos = $pdo->query($sql_pontos);
+$stmt_pontos = $db->query($sql_pontos);
 $pontos_turisticos = $stmt_pontos->fetchAll(PDO::FETCH_ASSOC);
 
 $sql_info = "SELECT id, tipo, nome, descricao, endereco, cidade, telefone, imagem
                FROM informacoes_uteis
            ORDER BY id DESC
               LIMIT 4";
-$stmt_info = $pdo->query($sql_info);
+$stmt_info = $db->query($sql_info);
 $informacoes_uteis = $stmt_info->fetchAll(PDO::FETCH_ASSOC);
 
 function formatarPreco($valor)

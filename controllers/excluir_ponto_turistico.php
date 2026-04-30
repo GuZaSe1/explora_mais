@@ -9,14 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($id) {
         try {
-            $stmt_check = $pdo->prepare("SELECT COUNT(*) FROM roteiro_itens WHERE ponto_turistico_id = ?");
+            $stmt_check = $db->prepare("SELECT COUNT(*) FROM roteiro_itens WHERE ponto_turistico_id = ?");
             $stmt_check->execute([$id]);
             $count = $stmt_check->fetchColumn();
 
             if ($count > 0) {
                 $response['message'] = 'O ponto turístico não pode ser excluído, pois está associado a roteiro(s).';
             } else {
-                $stmt_delete = $pdo->prepare("DELETE FROM pontos_turisticos WHERE id = ?");
+                $stmt_delete = $db->prepare("DELETE FROM pontos_turisticos WHERE id = ?");
                 $stmt_delete->execute([$id]);
                 $response['success'] = true;
                 $response['message'] = 'Ponto turístico excluído com sucesso!';

@@ -66,10 +66,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql .= " WHERE id = ?";
         $params[] = $id;
 
-        $stmt = $pdo->prepare($sql);
+        $stmt = $db->prepare($sql);
         $stmt->execute($params);
     } else {
-        $stmt = $pdo->prepare("INSERT INTO pontos_turisticos (nome, descricao, categoria, endereco, cidade, horario_funcionamento, preco, acessibilidade, imagem, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO pontos_turisticos (nome, descricao, categoria, endereco, cidade, horario_funcionamento, preco, acessibilidade, imagem, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$nome, $descricao, $categoria, $endereco, $cidade, $horario_funcionamento, $preco, $acessibilidade, $imagem, $latitude, $longitude]);
     }
 
@@ -94,7 +94,7 @@ $latitude = '';
 $longitude = '';
 
 if ($id) {
-    $stmt = $pdo->prepare("SELECT * FROM pontos_turisticos WHERE id = ?");
+    $stmt = $db->prepare("SELECT * FROM pontos_turisticos WHERE id = ?");
     $stmt->execute([$id]);
     $ponto = $stmt->fetch(PDO::FETCH_ASSOC);
 

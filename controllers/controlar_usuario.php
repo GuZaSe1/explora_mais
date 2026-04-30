@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $params_check[] = $id_post;
         }
 
-        $stmt_check = $pdo->prepare($sql_check);
+        $stmt_check = $db->prepare($sql_check);
         $stmt_check->execute($params_check);
 
         if ($stmt_check->fetch()) {
@@ -33,11 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response['message'] = 'Já existe um usuário cadastrado com esse e-mail.';
         } else {
             if ($id_post) {
-                $stmt = $pdo->prepare("UPDATE usuarios SET nome = ?, email = ?, tipo = ? WHERE id = ?");
+                $stmt = $db->prepare("UPDATE usuarios SET nome = ?, email = ?, tipo = ? WHERE id = ?");
                 $stmt->execute([$nome, $email, $tipo, $id_post]);
             } else {
                 $senha_padrao = password_hash('123456', PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
+                $stmt = $db->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)");
                 $stmt->execute([$nome, $email, $senha_padrao, $tipo]);
             }
         }
@@ -57,7 +57,7 @@ $email = '';
 $tipo = 'turista';
 
 if ($is_edit) {
-    $stmt = $pdo->prepare("SELECT nome, email, tipo FROM usuarios WHERE id = ?");
+    $stmt = $db->prepare("SELECT nome, email, tipo FROM usuarios WHERE id = ?");
     $stmt->execute([$id_get]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 

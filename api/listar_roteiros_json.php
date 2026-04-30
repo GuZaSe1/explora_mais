@@ -10,7 +10,7 @@ $offset = ($page - 1) * $rows;
 
 if ($_SESSION['usuario_tipo'] === 'admin') {
 
-    $stmt_total = $pdo->query("SELECT COUNT(*) FROM roteiros");
+    $stmt_total = $db->query("SELECT COUNT(*) FROM roteiros");
     $total = (int) $stmt_total->fetchColumn();
 
     $sql = "
@@ -29,13 +29,13 @@ if ($_SESSION['usuario_tipo'] === 'admin') {
         LIMIT :rows OFFSET :offset
     ";
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->bindParam(':rows', $rows, PDO::PARAM_INT);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
 } else {
 
-    $stmt_total = $pdo->prepare("SELECT COUNT(*) FROM roteiros WHERE usuario_id = ?");
+    $stmt_total = $db->prepare("SELECT COUNT(*) FROM roteiros WHERE usuario_id = ?");
     $stmt_total->execute([$_SESSION['usuario_id']]);
     $total = (int) $stmt_total->fetchColumn();
 
@@ -56,7 +56,7 @@ if ($_SESSION['usuario_tipo'] === 'admin') {
         LIMIT :rows OFFSET :offset
     ";
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->bindValue(':usuario_id', $_SESSION['usuario_id'], PDO::PARAM_INT);
     $stmt->bindParam(':rows', $rows, PDO::PARAM_INT);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);

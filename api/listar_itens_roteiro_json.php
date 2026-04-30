@@ -25,7 +25,7 @@ $sql = "
     ORDER BY ri.ordem_visita
 ";
 
-$stmt = $pdo->prepare($sql);
+$stmt = $db->prepare($sql);
 $stmt->bindParam(':roteiro_id', $roteiro_id, PDO::PARAM_INT);
 $stmt->execute();
 

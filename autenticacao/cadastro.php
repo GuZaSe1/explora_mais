@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($nome === '' || $email === '' || $senha === '') {
         $mensagem = 'Preencha todos os campos.';
     } else {
-        $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
+        $stmt = $db->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
 
         if ($stmt->fetch()) {
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-            $stmt = $pdo->prepare("
+            $stmt = $db->prepare("
                 INSERT INTO usuarios (nome, email, senha, tipo)
                 VALUES (?, ?, ?, 'turista')
             ");

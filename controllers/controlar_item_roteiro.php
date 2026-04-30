@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     FROM pontos_turisticos 
                    WHERE id = :ponto_turistico_id";
 
-        $exe = $pdo->prepare($query, [':ponto_turistico_id' => $ponto_turistico_id]);
+        $exe = $db->prepare($query, [':ponto_turistico_id' => $ponto_turistico_id]);
         $row = $exe->fetch(PDO::FETCH_ASSOC);
 
         if (!$row) {
@@ -43,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':roteiro_id' => $roteiro_id_post
                 ];
 
-                $exe = $pdo->prepare($query_update, $params_update);
+                $exe = $db->prepare($query_update, $params_update);
                 $row = $exe->fetch(PDO::FETCH_ASSOC);
             } else {
-                $stmt_insert = $pdo->prepare("INSERT INTO roteiro_itens (roteiro_id, ponto_turistico_id, ordem_visita, horario_visita) VALUES (?, ?, ?, ?)");
+                $stmt_insert = $db->prepare("INSERT INTO roteiro_itens (roteiro_id, ponto_turistico_id, ordem_visita, horario_visita) VALUES (?, ?, ?, ?)");
                 $stmt_insert->execute([$roteiro_id_post, $ponto_turistico_id, $ordem_visita, $horario_visita]);
             }
         }
@@ -64,7 +64,7 @@ $is_edit = $id !== null;
 
 if ($roteiro_id === null) die('Roteiro é obrigatório.');
 
-$stmt_pontos = $pdo->query("SELECT id, nome FROM pontos_turisticos ORDER BY nome");
+$stmt_pontos = $db->query("SELECT id, nome FROM pontos_turisticos ORDER BY nome");
 $pontos = $stmt_pontos->fetchAll(PDO::FETCH_ASSOC);
 $json_pontos = json_encode($pontos);
 
@@ -73,7 +73,7 @@ $ordem_visita = '';
 $horario_visita = '';
 
 if ($is_edit) {
-    $stmt = $pdo->prepare("SELECT * FROM roteiro_itens WHERE roteiro_id = ? AND id = ?");
+    $stmt = $db->prepare("SELECT * FROM roteiro_itens WHERE roteiro_id = ? AND id = ?");
     $stmt->execute([$roteiro_id, $id]);
     $item_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
