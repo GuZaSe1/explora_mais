@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . '/../auth/proteger.php';
-require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/templates/navbar.php';
+require __DIR__ . '/../../autenticacao/proteger.php';
+require __DIR__ . '/../../config/db.php';
+require __DIR__ . '/../../config/includes/navbar.php';
 session_start();
 
 navbar('home');

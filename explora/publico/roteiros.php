@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/db.php';
+require __DIR__ . '/../../config/db.php';
 session_start();
 
 $sql = "
@@ -259,16 +259,16 @@ $roteiros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <nav class="menu">
                 <a href="/explora_mais/index.php">Início</a>
-                <a href="/explora_mais/pages/catalogo.php">Pontos turísticos</a>
-                <a href="/explora_mais/pages/roteiros.php">Roteiros</a>
+                <a href="/explora_mais/explora/publico/catalogo.php">Pontos turísticos</a>
+                <a href="/explora_mais/explora/publico/roteiros.php">Roteiros</a>
                 <a href="/explora_mais/index.php#informacoes">Informações úteis</a>
 
                 <?php if (isset($_SESSION['usuario_id'])): ?>
-                    <a href="/explora_mais/admin/gerenciar_roteiros.php">Meus roteiros</a>
-                    <a href="/explora_mais/auth/logout.php">Sair</a>
+                    <a href="/explora_mais/explora/admin/gerenciar_roteiros.php">Meus roteiros</a>
+                    <a href="/explora_mais/autenticacao/logout.php">Sair</a>
                 <?php else: ?>
-                    <a href="/explora_mais/auth/login.php">Entrar</a>
-                    <a href="/explora_mais/auth/cadastro.php">Criar conta</a>
+                    <a href="/explora_mais/autenticacao/login.php">Entrar</a>
+                    <a href="/explora_mais/autenticacao/cadastro.php">Criar conta</a>
                 <?php endif; ?>
             </nav>
         </div>
@@ -305,7 +305,7 @@ $roteiros = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <p><strong>Criado em:</strong> <?php echo htmlspecialchars($roteiro['criado_em']); ?></p>
                             </div>
 
-                            <a href="/explora_mais/pages/detalhes_roteiro.php?id=<?php echo $roteiro['id']; ?>" class="btn">Ver detalhes</a>
+                            <a href="/explora_mais/explora/publico/detalhes_roteiro.php?id=<?php echo $roteiro['id']; ?>" class="btn">Ver detalhes</a>
                         </article>
                     <?php endforeach; ?>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../auth/proteger.php';
+require __DIR__ . '/../autenticacao/proteger.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -85,7 +85,7 @@ if ($is_edit) {
 
 if (!$is_form_only) {
     $pageTitle = $is_edit ? 'Modificar Roteiro' : 'Incluir Novo Roteiro';
-    require __DIR__ . '/../includes/templates/header.php';
+    require __DIR__ . '/../config/includes/header.php';
 }
 ?>
 
@@ -121,6 +121,6 @@ if (!$is_form_only) {
 
 <?php
 if (!$is_form_only) {
-    require __DIR__ . '/../includes/templates/footer.php';
+    require __DIR__ . '/../config/includes/footer.php';
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/paths.php';
+require __DIR__ . '/../config/paths.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -117,7 +117,7 @@ if ($id) {
 
 if (!$is_form_only) {
     $pageTitle = $id ? 'Editar Ponto Turístico' : 'Novo Ponto Turístico';
-    require __DIR__ . '/../includes/templates/header.php';
+    require __DIR__ . '/../config/includes/header.php';
 }
 ?>
 
@@ -178,4 +178,4 @@ if (!$is_form_only) {
     <?php endif; ?>
 </form>
 
-<?php if (!$is_form_only) require __DIR__ . '/../includes/templates/footer.php'; ?>
+<?php if (!$is_form_only) require __DIR__ . '/../config/includes/footer.php'; ?>

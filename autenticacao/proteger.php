@@ -2,7 +2,7 @@
 // session_start();
 
 // if (!isset($_SESSION['usuario_id'])) {
-//     header('Location: /explora_mais/auth/login.php');
+//     header('Location: /explora_mais/autenticacao/login.php');
 //     exit;
 // }
 

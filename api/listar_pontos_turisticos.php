@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/paths.php';
+require __DIR__ . '/../config/paths.php';
 session_start();
 
 $categoria = $_GET['categoria'] ?? null;

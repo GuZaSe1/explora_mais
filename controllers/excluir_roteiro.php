@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../auth/proteger.php';
+require __DIR__ . '/../autenticacao/proteger.php';
 session_start();
 
 $response = ['success' => false, 'message' => 'Requisição inválida.'];

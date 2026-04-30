@@ -51,7 +51,7 @@ if ($is_edit) {
 // Se não for 'form_only', inclui o cabeçalho da página
 if (!$is_form_only) {
     $pageTitle = $is_edit ? 'Modificar Cliente' : 'Incluir Novo Cliente';
-    require __DIR__ . '/../includes/templates/header.php';
+    require __DIR__ . '/../config/includes/header.php';
 }
 ?>
 
@@ -70,6 +70,6 @@ if (!$is_form_only) {
 <?php
 // Se não for 'form_only', inclui o rodapé
 if (!$is_form_only) {
-    require __DIR__ . '/../includes/templates/footer.php';
+    require __DIR__ . '/../config/includes/footer.php';
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../config/db.php';
-require __DIR__ . '/../includes/paths.php';
+require __DIR__ . '/../../config/db.php';
+require __DIR__ . '/../../config/paths.php';
 session_start();
 
 $usuario_logado = isset($_SESSION['usuario_id']);
@@ -518,9 +518,9 @@ function formatarTipoInfo($tipo)
             <a href="/explora_mais/index.php" class="logo">Explora+</a>
 
             <nav class="menu">
-                <a href="/explora_mais/pages/catalogo.php">Catálogo de Pontos</a>
+                <a href="/explora_mais/explora/publico/catalogo.php">Catálogo de Pontos</a>
                 <a href="#informacoes">Informações úteis</a>
-                <a href="/explora_mais/pages/roteiros.php">Roteiros</a>
+                <a href="/explora_mais/explora/publico/roteiros.php">Roteiros</a>
 
                 <?php if ($usuario_logado): ?>
                     <span class="usuario-badge">
@@ -528,18 +528,18 @@ function formatarTipoInfo($tipo)
                     </span>
 
                     <?php if ($usuario_tipo === 'admin'): ?>
-                        <a href="/explora_mais/admin/gerenciar_pontos_turisticos.php">Gerenciar pontos</a>
-                        <a href="/explora_mais/admin/gerenciar_roteiros.php">Gerenciar roteiros</a>
-                        <a href="/explora_mais/admin/gerenciar_usuarios.php">Usuários</a>
+                        <a href="/explora_mais/explora/admin/gerenciar_pontos_turisticos.php">Gerenciar pontos</a>
+                        <a href="/explora_mais/explora/admin/gerenciar_roteiros.php">Gerenciar roteiros</a>
+                        <a href="/explora_mais/explora/admin/gerenciar_usuarios.php">Usuários</a>
                     <?php else: ?>
-                        <a href="/explora_mais/admin/gerenciar_roteiros.php">Meus roteiros</a>
-                        <a href="/explora_mais/pages/minha_conta.php">Minha conta</a>
+                        <a href="/explora_mais/explora/admin/gerenciar_roteiros.php">Meus roteiros</a>
+                        <a href="/explora_mais/explora/publico/minha_conta.php">Minha conta</a>
                     <?php endif; ?>
 
-                    <a href="/explora_mais/auth/logout.php">Sair</a>
+                    <a href="/explora_mais/autenticacao/logout.php">Sair</a>
                 <?php else: ?>
-                    <a href="/explora_mais/auth/login.php">Entrar</a>
-                    <a href="/explora_mais/auth/cadastro.php">Criar conta</a>
+                    <a href="/explora_mais/autenticacao/login.php">Entrar</a>
+                    <a href="/explora_mais/autenticacao/cadastro.php">Criar conta</a>
                 <?php endif; ?>
             </nav>
         </div>
@@ -552,22 +552,22 @@ function formatarTipoInfo($tipo)
                     <h1>Gerencie e descubra o melhor da cidade.</h1>
                     <p>O painel administrativo do Explora+ permite o controle total sobre pontos turísticos, roteiros e informações úteis para os visitantes.</p>
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="/explora_mais/admin/gerenciar_pontos_turisticos.php" class="btn btn-primario">Adicionar Novo Ponto</a>
-                        <a href="/explora_mais/pages/catalogo.php" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Ver Catálogo Completo</a>
+                        <a href="/explora_mais/explora/admin/gerenciar_pontos_turisticos.php" class="btn btn-primario">Adicionar Novo Ponto</a>
+                        <a href="/explora_mais/explora/publico/catalogo.php" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Ver Catálogo Completo</a>
                     </div>
                 <?php elseif ($usuario_logado): ?>
                     <h1>Planeje seus roteiros e descubra novos destinos.</h1>
                     <p>Com sua conta no Explora+, você pode visualizar pontos turísticos e organizar roteiros personalizados para a sua viagem.</p>
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="/explora_mais/admin/gerenciar_roteiros.php" class="btn btn-primario">Meus roteiros</a>
-                        <a href="/explora_mais/pages/catalogo.php" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Explorar destinos</a>
+                        <a href="/explora_mais/explora/admin/gerenciar_roteiros.php" class="btn btn-primario">Meus roteiros</a>
+                        <a href="/explora_mais/explora/publico/catalogo.php" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Explorar destinos</a>
                     </div>
                 <?php else: ?>
                     <h1>Descubra os melhores destinos e monte seu roteiro.</h1>
                     <p>Explore pontos turísticos, encontre informações úteis e crie uma conta para organizar seus próprios roteiros de viagem.</p>
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="/explora_mais/auth/cadastro.php" class="btn btn-primario">Criar conta</a>
-                        <a href="/explora_mais/auth/login.php" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Entrar</a>
+                        <a href="/explora_mais/autenticacao/cadastro.php" class="btn btn-primario">Criar conta</a>
+                        <a href="/explora_mais/autenticacao/login.php" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Entrar</a>
                     </div>
                 <?php endif; ?>
             </div>
@@ -601,7 +601,7 @@ function formatarTipoInfo($tipo)
                         <h2>Últimos Destinos Adicionados</h2>
                         <p style="color: var(--texto-suave);">Confira os 4 cadastros mais recentes do sistema.</p>
                     </div>
-                    <a href="/explora_mais/pages/catalogo.php" class="btn btn-contorno">Ver todo o catálogo</a>
+                    <a href="/explora_mais/explora/publico/catalogo.php" class="btn btn-contorno">Ver todo o catálogo</a>
                 </div>
 
                 <?php if (!empty($pontos_turisticos)): ?>

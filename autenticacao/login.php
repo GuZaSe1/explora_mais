@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="link-footer">
-            Não tem conta? <a href="/explora_mais/auth/cadastro.php">Criar conta</a>
+            Não tem conta? <a href="/explora_mais/autenticacao/cadastro.php">Criar conta</a>
         </div>
     </div>
 </body>

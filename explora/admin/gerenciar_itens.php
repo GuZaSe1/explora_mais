@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../includes/templates/header.php';
-require __DIR__ . '/../includes/templates/navbar.php';
+require __DIR__ . '/../../config/includes/header.php';
+require __DIR__ . '/../../config/includes/navbar.php';
 
 ini_set('max_file_uploads', '100'); // permite até 100 uploads simultâneos
 session_start();
@@ -20,7 +20,7 @@ navbar('home');
         <div class="easyui-panel" title="Gerenciamento de Itens" style="padding:10px;">
             <div style="margin-bottom:10px;">
                 <a onclick="abrirDialogInclusaoItem()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Incluir Item</a>
-                <a href="/explora_mais/admin/gerenciar_pedidos.php" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">Voltar para Pedidos</a>
+                <a href="/explora_mais/explora/admin/gerenciar_pedidos.php" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">Voltar para Pedidos</a>
             </div>
 
             <table id="dg_itens" class="easyui-datagrid" style="width:100%; height:400px"
@@ -134,4 +134,4 @@ navbar('home');
     }
 </script>
 
-<?php require __DIR__ . '/../includes/templates/footer.php'; ?>
+<?php require __DIR__ . '/../../config/includes/footer.php'; ?>
