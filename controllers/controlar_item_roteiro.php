@@ -2,59 +2,58 @@
 require __DIR__ . '/../config/db.php';
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $response = ['success' => true, 'message' => ''];
+$ponto_turistico_id = $_POST['ponto_turistico_id'] ?? '';
+$ordem_visita = $_POST['ordem_visita'] ?? '';
+$horario_visita = $_POST['horario_visita'] ?? null;
+$roteiro_id_post = $_POST['roteiro_id'] ?? null;
+$id_post = $_POST['id'] ?: null;
 
-    $ponto_turistico_id = $_POST['ponto_turistico_id'] ?? '';
-    $ordem_visita = $_POST['ordem_visita'] ?? '';
-    $horario_visita = $_POST['horario_visita'] ?? null;
-    $roteiro_id_post = $_POST['roteiro_id'] ?? null;
-    $id_post = $_POST['id'] ?: null;
+$query = "SELECT 1 
+            FROM pontos_turisticos 
+           WHERE id = :ponto_turistico_id";
 
-    if (empty($ponto_turistico_id) || empty($ordem_visita) || empty($roteiro_id_post)) {
-        $response['success'] = false;
-        $response['message'] = 'Todos os campos obrigatórios devem ser preenchidos.';
-    } else {
+$exe = $db->prepare($query, [':ponto_turistico_id' => $ponto_turistico_id]);
+$row = $exe->fetch(PDO::FETCH_ASSOC);
 
-        $query = "SELECT 1 
-                    FROM pontos_turisticos 
-                   WHERE id = :ponto_turistico_id";
+if ($id_post) {
 
-        $exe = $db->prepare($query, [':ponto_turistico_id' => $ponto_turistico_id]);
-        $row = $exe->fetch(PDO::FETCH_ASSOC);
+    $query_update = "UPDATE roteiro_itens 
+                        SET ponto_turistico_id = :ponto_turistico_id, 
+                            ordem_visita = :ordem_visita, 
+                            horario_visita = :horario_visita
+                      WHERE id = :id AND roteiro_id = :roteiro_id";
 
-        if (!$row) {
-            $response['success'] = false;
-            $response['message'] = 'O ponto turístico informado não existe.';
-        } else {
-            if ($id_post) {
+    $params_update = [
+        ':ponto_turistico_id' => $ponto_turistico_id,
+        ':ordem_visita' => $ordem_visita,
+        ':horario_visita' => $horario_visita,
+        ':id' => $id_post,
+        ':roteiro_id' => $roteiro_id_post
+    ];
 
-                $query_update = "UPDATE roteiro_itens 
-                                    SET ponto_turistico_id = :ponto_turistico_id, 
-                                        ordem_visita = :ordem_visita, 
-                                        horario_visita = :horario_visita
-                                  WHERE id = :id AND roteiro_id = :roteiro_id";
+    $exe = $db->prepare($query_update, $params_update);
+    $row = $exe->fetch(PDO::FETCH_ASSOC);
+} else {
 
-                $params_update = [
-                    ':ponto_turistico_id' => $ponto_turistico_id,
-                    ':ordem_visita' => $ordem_visita,
-                    ':horario_visita' => $horario_visita,
-                    ':id' => $id_post,
-                    ':roteiro_id' => $roteiro_id_post
-                ];
+    $query_insert = "INSERT INTO roteiro_itens (
+                             roteiro_id,
+                             ponto_turistico_id,
+                             ordem_visita,
+                             horario_visita) 
+                      VALUES (
+                             :roteiro_id,
+                             :ponto_turistico_id,
+                             :ordem_visita,
+                             :horario_visita)";
 
-                $exe = $db->prepare($query_update, $params_update);
-                $row = $exe->fetch(PDO::FETCH_ASSOC);
-            } else {
-                $stmt_insert = $db->prepare("INSERT INTO roteiro_itens (roteiro_id, ponto_turistico_id, ordem_visita, horario_visita) VALUES (?, ?, ?, ?)");
-                $stmt_insert->execute([$roteiro_id_post, $ponto_turistico_id, $ordem_visita, $horario_visita]);
-            }
-        }
-    }
+    $params_insert = [
+        'roteiro_id' => $roteiro_id_post,
+        'ponto_turistico_id' => $ponto_turistico_id,
+        'ordem_visita' => $ordem_visita,
+        'horario_visita' => $horario_visita
+    ];
 
-    header('Content-Type: application/json');
-    echo json_encode($response);
-    exit;
+    $db->prepare($query_insert, $params_insert);
 }
 
 $is_form_only = isset($_GET['form_only']);
@@ -73,9 +72,16 @@ $ordem_visita = '';
 $horario_visita = '';
 
 if ($is_edit) {
-    $stmt = $db->prepare("SELECT * FROM roteiro_itens WHERE roteiro_id = ? AND id = ?");
-    $stmt->execute([$roteiro_id, $id]);
-    $item_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $query = "SELECT *
+                FROM roteiro_itens 
+               WHERE roteiro_id = :roteiro_id
+                 AND id = :id";
+
+    $params = ['roteiro_id' => $roteiro_id, 'id' => $id];
+
+    $exe_query = $db->prepare($query, $params) or die(print_r($db->errorInfo(), true));
+    $item_data = $exe_query->fetch(PDO::FETCH_ASSOC);
 
     if ($item_data) {
         $ponto_turistico_id = $item_data['ponto_turistico_id'];
